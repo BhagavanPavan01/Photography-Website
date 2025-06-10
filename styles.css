@@ -154,7 +154,7 @@ img {
     font-weight: bold;
     color: #fff;
     text-decoration: none;
-    
+
 }
 
 .logo-img {
@@ -163,7 +163,7 @@ img {
     margin-right: 20px;
     object-fit: cover;
     border-radius: 50%;
-    
+
 }
 
 
@@ -1050,34 +1050,119 @@ footer {
 }
 
 
-.containerForContact{
+.containerForContact {
     padding: 40px;
 }
 
-    textarea {
-      width: 100%;
-      height: 150px;
-      padding: 10px;
-      font-size: 16px;
-      resize: vertical;
-      margin-bottom: 15px;
-    }
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    font-size: 16px;
+    resize: vertical;
+    margin-bottom: 15px;
+}
 
-    button {
-      padding: 12px 20px;
-      font-size: 16px;
-      margin-right: 10px;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-    }
+button {
+    padding: 12px 20px;
+    font-size: 16px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
 
-    .whatsapp {
-      background-color: #25D366;
-      color: white;
-    }
+.whatsapp {
+    background-color: #25D366;
+    color: white;
+}
 
-    .email {
-      background-color: #007bff;
-      color: white;
-    }
+.email {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Behind The Scenes Section */
+.bts-section {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.bts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.bts-item {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.bts-item:hover {
+    transform: translateY(-10px);
+}
+
+.bts-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.bts-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.bts-item:hover .bts-image img {
+    transform: scale(1.05);
+}
+
+.bts-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.bts-item:hover .bts-overlay {
+    opacity: 1;
+}
+
+.bts-overlay i {
+    color: white;
+    font-size: 50px;
+}
+
+.bts-item h3 {
+    margin: 20px 0 10px;
+    font-size: 1.3rem;
+}
+
+.bts-item p {
+    padding: 0 20px 20px;
+    color: #666;
+}
+
+.bts-cta {
+    margin-top: 50px;
+}
+
+.bts-cta p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}

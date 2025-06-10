@@ -195,3 +195,13 @@ function sendViaEmail() {
     const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
     window.location.href = mailtoLink;
 }
+
+
+// Add this to your existing script.js
+document.querySelectorAll('.bts-overlay').forEach(overlay => {
+    overlay.addEventListener('click', function() {
+        // This would open a modal with the BTS video
+        // You can implement similar to your image modal
+        alert('BTS video would play here!');
+    });
+});
