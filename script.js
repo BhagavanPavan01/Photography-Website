@@ -205,3 +205,116 @@ document.querySelectorAll('.bts-overlay').forEach(overlay => {
         alert('BTS video would play here!');
     });
 });
+
+
+
+// ======================== Image Modal Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all view buttons
+    const viewButtons = document.querySelectorAll('.view-btn');
+    const modal = document.querySelector('.image-modal');
+    const modalImg = document.getElementById('modal-image');
+    const closeModal = document.querySelector('.close-modal');
+    
+    // Open modal when view button is clicked
+    viewButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const imgSrc = this.getAttribute('data-image');
+            modalImg.src = imgSrc;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    
+    // Close modal
+    closeModal.addEventListener('click', function() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+    
+    // Close when clicking outside image
+    window.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Testimonial Slider
+    const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+    const testimonialDots = document.querySelectorAll('.testimonial-dot');
+    let currentSlide = 0;
+    
+    function showSlide(n) {
+        testimonialSlides.forEach(slide => slide.classList.remove('active'));
+        testimonialDots.forEach(dot => dot.classList.remove('active'));
+        
+        currentSlide = (n + testimonialSlides.length) % testimonialSlides.length;
+        testimonialSlides[currentSlide].classList.add('active');
+        testimonialDots[currentSlide].classList.add('active');
+    }
+    
+    testimonialDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => showSlide(index));
+    });
+    
+    // Auto-rotate testimonials
+    setInterval(() => {
+        showSlide(currentSlide + 1);
+    }, 5000);
+    
+    // Mobile menu toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navList = document.querySelector('.nav-list');
+    
+    mobileMenu.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navList.classList.toggle('active');
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+            
+            // Close mobile menu if open
+            mobileMenu.classList.remove('active');
+            navList.classList.remove('active');
+        });
+    });
+    
+    // Newsletter form submission
+    const newsletterForm = document.getElementById('newsletterForm');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            // Here you would typically send the email to your server
+            alert(`Thank you for subscribing with ${email}!`);
+            this.reset();
+        });
+    }
+    
+    // Contact form functionality
+    function sendViaWhatsApp() {
+        const message = document.getElementById('messageInput').value;
+        const encodedMessage = encodeURIComponent(message);
+        window.open(`https://wa.me/919542377685?text=${encodedMessage}`, '_blank');
+    }
+    
+    function sendViaEmail() {
+        const message = document.getElementById('messageInput').value;
+        const subject = "Photography Service Inquiry";
+        const mailtoLink = `mailto:bhagavanpavan01@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+        window.location.href = mailtoLink;
+    }
+});
